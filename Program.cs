@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace ConsoleAppSimpleTasks
 {
     class Program
@@ -48,6 +49,30 @@ namespace ConsoleAppSimpleTasks
             else if (numberTask == 10)
             {
                 TenTask();
+            }
+            else if (numberTask == 11)
+            {
+                ElevenTask();
+            }
+            else if (numberTask == 12)
+            {
+                TvelfeTask();
+            }
+            else if (numberTask == 13)
+            {
+                ThreeteenTask();
+            }
+            else if (numberTask == 14)
+            {
+                GlovesOfTask();
+            }
+            else if (numberTask == 15)
+            {
+                ImportantWordParse();
+            }
+            else if (numberTask == 16)
+            {
+                SixteenTask();
             }
             Console.ReadLine();
         }
@@ -350,5 +375,152 @@ namespace ConsoleAppSimpleTasks
                 }
             }
         }
+        /// <summary>
+        /// Дано натуральное число меньше 1000. Получить из него новое число, чтобы все цифры в нем распологались по возрастанию
+        /// </summary>
+        static void ElevenTask()
+        {
+            Console.Write("Задайте натуральное число меньше 1000:  ");
+            int rndNum = int.Parse(Console.ReadLine());
+
+            int a = rndNum / 100; //7
+            int b = rndNum / 10; //8
+            b %= 10;
+            int c = rndNum % 10; //9
+
+            int newNum;
+
+            if (a <= b && a <= c && b >= c)
+            {
+                newNum = (a * 100) + (b * 10) + c;
+                Console.WriteLine(newNum);
+            }
+            if (a <= b && a <= c && b <= c)
+            {
+                newNum = (a * 100) + (b * 10) + c;
+                Console.WriteLine(newNum);    //798
+            }
+            if (b <= a && b <= c && a <= c)
+            {
+                newNum = (b * 100) + (a * 10) + c;
+                Console.WriteLine(newNum);
+            }
+            if (c <= a && c <= b && b <= a)
+            {
+                newNum = (c * 100) + (b * 10) + a;
+                Console.WriteLine(newNum);
+            }
+        }
+        ///<summary>
+        ///Введен символ. Определить, какой это символ: буква, цифра, знак операции, другое.
+        ///</summary>
+        static void TvelfeTask()
+        {
+            Console.Write("Введите цифру любого символа: {0}:1, {1}:/, {2}:a ",1,2,3);
+            int symbol = int.Parse(Console.ReadLine());
+
+            switch (symbol)
+            {
+                case 1:
+                    Console.WriteLine("Введена цифра один"); ;
+                    break;
+                case 2:
+                    Console.WriteLine("Введен знак деления");
+                    break;
+                case 3:
+                    Console.WriteLine("Введена буква а");
+                    break;
+         
+                default:
+                    Console.WriteLine("Введено что-то другое");
+                    break;
+            }
+        }
+        /// <summary>
+        /// Введено целое число. Если это цифра, вывести ее словесное обозначение(т.е.если введено 9, должно быть выведено девять). 
+        /// В противном случае вывести число внеизменном виде.
+        /// </summary>
+        static void ThreeteenTask()
+        {
+            Console.Write("Введите любую цифру или число: ");
+            string anyNumber = Console.ReadLine();
+            int a = int.Parse(anyNumber);
+
+            if (a<=10)
+            {
+                Console.WriteLine(anyNumber);
+            }
+            else
+            {
+                Console.WriteLine(a);
+            }
+        }
+        /// <summary>
+        /// В ящике хранится 20 перчаток: 5 пар чёрных, 3 пары коричневых и 2 пары серых. Вы выбираете перчатки в темноте и можете посмотреть, что вы выбрали, только после того, как выбор сделан. 
+        /// Чему равно минимальное количество перчаток, которые надо взять из ящика, чтобы гарантировано получить: 
+        ///а) по крайней мере одну подходящую bпару;
+        ///б) по крайней мере одну подходящую пару каждого цвета? 
+        /// </summary>
+        static void GlovesOfTask()
+        {
+            int quantityGlovesBlack = 5;
+            int quantityGlovesGray = 3;
+            int quantityGlovesBrown = 2;
+
+            int sumOfGloves = (quantityGlovesBlack + quantityGlovesBrown + quantityGlovesGray)*2;
+
+            int someCoupleGloves = sumOfGloves / 2 + 1;
+            Console.WriteLine("Сколько нужно взять перчаток чтобы получилась хоть одна пара? Ответ: {0}",someCoupleGloves);
+
+            int coupleGloves = sumOfGloves - 1;
+            Console.WriteLine("Сколько нужно взять перчаток чтобы получились три пары? Ответ: {0}", coupleGloves);
+
+        }
+        /// <summary>
+        /// Изучение ключевого слова TryParse
+        /// </summary>        
+        static void ImportantWordParse()
+        {
+            Console.WriteLine("=> Data type parsing with TryParse:");
+            if (bool.TryParse("True", out bool b))
+            {
+                Console.WriteLine("Value of b: {0}", b); // Вывод значения b
+            }
+            string value = "Hello";
+            if (double.TryParse(value, out double d))
+            {
+                Console.WriteLine("Value of d: {0}", d); // Вывод значения d
+            }
+            else
+            {
+                // Преобразование потерпело неудачу
+                Console.WriteLine("Failed to convert the input ({0}) to a double", value);
+            }
+        }
+        ///<summary>
+        ///Введен символ. Определить, какой это символ: буква, цифра, знак операции, другое - 2 вариант решения.
+        ///</summary>
+        static void SixteenTask()
+        {
+            Console.WriteLine("Введите любой символ");
+            string anySymbol = Console.ReadLine();
+
+            switch (anySymbol)
+            {
+                case "w":
+                    Console.WriteLine("Введена буква");
+                    break;
+                case "/":
+                    Console.WriteLine("Введен знак операции");
+                    break;
+                case "1":
+                    Console.WriteLine("Введена цифра");
+                    break;
+                default:
+                    Console.WriteLine("Введено что-то другое");
+                    break;
+            }
+        }
     }
+
 }
