@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 
 namespace ConsoleAppSimpleTasks
@@ -73,6 +74,14 @@ namespace ConsoleAppSimpleTasks
             else if (numberTask == 16)
             {
                 SixteenTask();
+            }
+            else if (numberTask == 17)
+            {
+                SeventeenTask();
+            }
+            else if (numberTask == 18)
+            {
+                Eighteen();
             }
             Console.ReadLine();
         }
@@ -481,20 +490,17 @@ namespace ConsoleAppSimpleTasks
         /// </summary>        
         static void ImportantWordParse()
         {
-            Console.WriteLine("=> Data type parsing with TryParse:");
-            if (bool.TryParse("True", out bool b))
+            string str = "34";
+
+            bool result = int.TryParse(str,out int a);
+
+            if (result)
             {
-                Console.WriteLine("Value of b: {0}", b); // Вывод значения b
-            }
-            string value = "Hello";
-            if (double.TryParse(value, out double d))
-            {
-                Console.WriteLine("Value of d: {0}", d); // Вывод значения d
+                Console.Write("Значение переменной a равно: {0}",a);
             }
             else
             {
-                // Преобразование потерпело неудачу
-                Console.WriteLine("Failed to convert the input ({0}) to a double", value);
+                Console.WriteLine("Введены некорректные данные");
             }
         }
         ///<summary>
@@ -518,6 +524,58 @@ namespace ConsoleAppSimpleTasks
                     break;
                 default:
                     Console.WriteLine("Введено что-то другое");
+                    break;
+            }
+        }
+        /// <summary>
+        /// Даны числа А, В, С. Удвоить эти числа если А>B>=C. И заменить их абсолютными значениями если это не так.
+        /// </summary>
+        static void SeventeenTask()
+        {
+            {
+                double a = 6.8;
+                int b = 4;
+                int c = 2;
+
+                if (a > b && b >= c)
+                {
+                    Console.WriteLine(a * 2);
+                    Console.WriteLine(b * 2);
+                    Console.WriteLine(c * 2);
+
+                }
+                else
+                {
+                    Console.WriteLine(a);
+                    Console.WriteLine(b);
+                    Console.WriteLine(c);
+                }
+
+            }
+        }
+        ///<summary>
+        /// Простой конвертер валют
+        /// </summary>
+        
+        static void Eighteen()
+        {
+            Console.WriteLine("Введите количество рублей для конвертации в другую валюту");
+            int rubble = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Выберите валюту - euro или dollar");
+            string valute = Console.ReadLine();
+            
+            
+            switch (valute)
+            {
+                case "euro":
+                    int eur = rubble / 70;
+                    Console.Write("{0} рублей равно {1} евро", rubble, eur);
+                    break;
+
+                case "dollar":
+                    int usd = rubble / 80;
+                    Console.Write("{0} рублей равно {1} долларам", rubble, usd);
                     break;
             }
         }
